@@ -2,3 +2,8 @@ c:\users\benvlodgi\documents\visual studio 2012\Projects\VMFParser\VMFParser\bin
 c:\users\benvlodgi\documents\visual studio 2012\Projects\VMFParser\VMFParser\bin\Release\VMFParser.pdb
 c:\users\benvlodgi\documents\visual studio 2012\Projects\VMFParser\VMFParser\obj\Release\VMFParser.dll
 c:\users\benvlodgi\documents\visual studio 2012\Projects\VMFParser\VMFParser\obj\Release\VMFParser.pdb
+C:\Users\BenVlodgi\Documents\GitHub\VMFParser\VMFParser\bin\Release\VMFParser.dll
+C:\Users\BenVlodgi\Documents\GitHub\VMFParser\VMFParser\bin\Release\VMFParser.pdb
+C:\Users\BenVlodgi\Documents\GitHub\VMFParser\VMFParser\obj\Release\VMFParser.dll
+C:\Users\BenVlodgi\Documents\GitHub\VMFParser\VMFParser\obj\Release\VMFParser.pdb
+C:\Users\BenVlodgi\Documents\GitHub\VMFParser\VMFParser\obj\Release\VMFParser.csprojResolveAssemblyReference.cache
