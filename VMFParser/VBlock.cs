@@ -15,6 +15,7 @@ namespace VMFParser
             Name = name;
             if (body == null)
                 body = new List<IVNode>();
+            Body = body;
         }
 
         /// <summary>Initializes a new instance of the <see cref="VBlock"/> class from VMF text.</summary>
