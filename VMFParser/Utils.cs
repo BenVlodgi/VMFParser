@@ -13,7 +13,7 @@ namespace VMFParser
 
         internal static IList<IVNode> ParseToBody(string[] body)
         {
-            IList<IVNode> nBody = new List<IVNode>();
+            IList<IVNode> newBody = new List<IVNode>();
             int depth = 0;
             var wasDeep = false;
             IList<string> nextBlock = null;
@@ -31,7 +31,7 @@ namespace VMFParser
 
                 if (depth == 0)
                     if (Utils.GetNodeType(line) == typeof(VProperty))
-                        nBody.Add(new VProperty(line));
+                        newBody.Add(new VProperty(line));
                     else
                     {
                         nextBlock = new List<string>();
@@ -47,22 +47,23 @@ namespace VMFParser
 
                 if (wasDeep && depth == 0)
                 {
-                    nBody.Add(new VBlock(nextBlock.ToArray()));
+                    newBody.Add(new VBlock(nextBlock.ToArray()));
                     nextBlock = null;
                 }
             }
-            return nBody;
+            return newBody;
         }
 
         internal static IList<string> BodyToString(IList<IVNode> body)
         {
             IList<string> text = new List<string>();
-            foreach (var node in body)
-                if (node.GetType() == typeof(VProperty))
-                    text.Add(((VProperty)node).ToVMFString());
-                else
-                    foreach (string s in ((VBlock)node).ToVMFStrings())
-                        text.Add(s);
+            if (body != null)
+                foreach (var node in body)
+                    if (node.GetType() == typeof(VProperty))
+                        text.Add(((VProperty)node).ToVMFString());
+                    else
+                        foreach (string s in ((VBlock)node).ToVMFStrings())
+                            text.Add(s);
             return text;
         }
     }
