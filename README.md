@@ -15,7 +15,7 @@
       - [string[] `ToVMFStrings`(bool useTabs(true))](#string-tovmfstringsbool-usetabstrue)
       - [string `ToString`()](#string-tostring)
   - [`VProperty` : `IVNode`](#vproperty--ivnode)
-      - [string Name (get, private set)](#string-name-get-private-set-1)
+      - [string `Name` (get, private set)](#string-name-get-private-set-1)
       - [string `Value` (get, set)](#string-value-get-set)
       - [Constructor(string name, string value)](#constructorstring-name-string-value)
       - [Constructor(string text)](#constructorstring-text-1)
@@ -75,7 +75,7 @@ In the following example, `Name` = **visgroupid**, and the `Value` = **5**
 
     "visgroupid" "5"
 
-###### string Name (get, private set)
+###### string `Name` (get, private set)
 > Represents the title/name of the property.
 ###### string `Value` (get, set)
 > Holds the text value of this property.
