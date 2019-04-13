@@ -30,5 +30,15 @@
         {
             return base.ToString() + " (" + Name + ")";
         }
+
+        public IVNode DeepClone()
+        {
+            return new VProperty(Name, Value);
+        }
+
+        public VProperty DeepCloneVProperty()
+        {
+            return (VProperty) DeepClone();
+        }
     }
 }

@@ -42,5 +42,15 @@ namespace VMFParser
         {
             return base.ToString() + " (" + Name + ")";
         }
+
+        public IVNode DeepClone()
+        {
+            return new VBlock(Name, Body == null ? null :
+                Body.Select(node => node.DeepClone()).ToList());
+        }
+        public VBlock DeepCloneVBlock()
+        {
+            return (VBlock) DeepClone();
+        }
     }
 }

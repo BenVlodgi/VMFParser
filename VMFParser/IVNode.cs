@@ -4,5 +4,8 @@
     public interface IVNode
     {
         string Name { get; }
+
+        IVNode DeepClone();
+
     }
 }
