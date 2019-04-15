@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace VMFParser
 {
@@ -10,6 +12,37 @@ namespace VMFParser
             T[] result = new T[length];
             Array.Copy(data, index, result, 0, length);
             return result;
+        }
+
+        /// <summary> Returns first <see cref="VBlock"/> in list. </summary>
+        public static VBlock VBlock(this IEnumerable<IVNode> body)
+        {
+            return body.WhereClass<VBlock>().FirstOrDefault();
+        }
+
+        /// <summary> Returns first <see cref="VBlock"/> in list that matches the predicate. </summary>
+        public static VBlock VBlock(this IEnumerable<IVNode> body, Func<VBlock,bool> predicate)
+        {
+            return body.WhereClass<VBlock>().FirstOrDefault(predicate);
+        }
+
+        /// <summary> Returns first <see cref="VProperty"/> in list. </summary>
+        public static VProperty VProperty(this IEnumerable<IVNode> body)
+        {
+            return body.WhereClass<VProperty>().FirstOrDefault();
+        }
+
+        /// <summary> Returns first <see cref="VProperty"/> in list that matches the predicate. </summary>
+        public static VProperty VProperty(this IEnumerable<IVNode> body, Func<VProperty, bool> predicate)
+        {
+            return body.WhereClass<VProperty>().FirstOrDefault(predicate);
+        }
+        
+        /// <summary> Returns given list, with values cast to given type, nulls are removed. </summary>
+        /// <typeparam name="AsType">Type all values will be cast to. </typeparam>
+        public static IEnumerable<AsType> WhereClass<AsType>(this IEnumerable<object> data) where AsType : class
+        {
+            return data.Where(d => d as AsType != null).Cast<AsType>();
         }
     }
 }
