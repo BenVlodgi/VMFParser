@@ -21,7 +21,7 @@ namespace VMFParser
         }
 
         /// <summary> Returns first <see cref="VMFParser.VBlock"/> in list that matches the predicate. </summary>
-        public static VBlock VBlock(this IEnumerable<IVNode> body, Func<VBlock,bool> predicate)
+        public static VBlock VBlock(this IEnumerable<IVNode> body, Func<VBlock, bool> predicate)
         {
             return body.WhereClass<VBlock>().FirstOrDefault(predicate);
         }
@@ -37,12 +37,33 @@ namespace VMFParser
         {
             return body.WhereClass<VProperty>().FirstOrDefault(predicate);
         }
-        
+
         /// <summary> Returns given list, with values cast to given type, nulls are removed. </summary>
         /// <typeparam name="AsType">Type all values will be cast to. </typeparam>
         public static IEnumerable<AsType> WhereClass<AsType>(this IEnumerable<object> data) where AsType : class
         {
             return data.Where(d => d as AsType != null).Cast<AsType>();
+        }
+
+        /// <summary> Adds key value to dictionary unless already exists. </summary>
+        /// <param name="update">When true, value will be updated. </param>
+        /// <returns> True if given value was set. </returns>
+        public static bool AddSafe<TKey, TValue>(this Dictionary<TKey, TValue> dict, TKey key, TValue value, bool update = false)
+        {
+            if(dict.ContainsKey(key))
+            {
+                if (update)
+                {
+                    dict[key] = value;
+                    return true;
+                }
+                else return false;
+            }
+            else
+            {
+                dict.Add(key, value);
+                return true;
+            }
         }
     }
 }
