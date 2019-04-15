@@ -4,10 +4,10 @@ using System.Linq;
 namespace VMFParser
 {
     /// <summary>Represents a block containing other IVNodes in a VMF</summary>
-    public class VBlock : IVNode
+    public class VBlock : IVNode, IDeepCloneable<VBlock>
     {
         public string Name { get; private set; }
-        public IList<IVNode> Body { get; private set; }
+        public IList<IVNode> Body { get; protected set; }
 
         /// <summary>Initializes a new instance of the <see cref="VBlock"/> class from its name and a list of IVNodes.</summary>
         public VBlock(string name, IList<IVNode> body = null)
@@ -43,14 +43,10 @@ namespace VMFParser
             return base.ToString() + " (" + Name + ")";
         }
 
-        public IVNode DeepClone()
+        IVNode IDeepCloneable<IVNode>.DeepClone() => DeepClone();
+        public VBlock DeepClone()
         {
-            return new VBlock(Name, Body == null ? null :
-                Body.Select(node => node.DeepClone()).ToList());
-        }
-        public VBlock DeepCloneVBlock()
-        {
-            return (VBlock) DeepClone();
+            return new VBlock(Name, Body == null ? null : Body.Select(node => node.DeepClone()).ToList());
         }
     }
 }

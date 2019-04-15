@@ -1,6 +1,6 @@
 ﻿namespace VMFParser
 {
-    public class VProperty : IVNode
+    public class VProperty : IVNode, IDeepCloneable<VProperty>
     {
         public string Name { get; private set; }
         public string Value { get; set; }
@@ -31,14 +31,10 @@
             return base.ToString() + " (" + Name + ")";
         }
 
-        public IVNode DeepClone()
+        IVNode IDeepCloneable<IVNode>.DeepClone() => DeepClone();
+        public VProperty DeepClone()
         {
             return new VProperty(Name, Value);
-        }
-
-        public VProperty DeepCloneVProperty()
-        {
-            return (VProperty) DeepClone();
         }
     }
 }
