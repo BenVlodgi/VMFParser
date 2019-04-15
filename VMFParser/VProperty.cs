@@ -26,6 +26,7 @@
             return string.Format("\"{0}\" \"{1}\"", Name, Value);
         }
 
+        /// <summary> This is used mostly for debug visualization.</summary>
         public override string ToString()
         {
             return base.ToString() + " (" + Name + ")";
@@ -35,6 +36,38 @@
         public VProperty DeepClone()
         {
             return new VProperty(Name, Value);
+        }
+
+        public int GetValueAsInt(int defaultValue = 0)
+        {
+            return int.TryParse(Value, out int val) ? val : defaultValue;
+        }
+
+        public void SetValueAsInt(int value)
+        {
+            Value = value.ToString();
+        }
+        
+        public decimal GetValueAsDecimal(decimal defaultValue = 0M)
+        {
+            return decimal.TryParse(Value, out decimal val) ? val : defaultValue;
+        }
+
+        public void SetValueAsAxis(decimal value)
+        {
+            Value = value.ToString();
+            // TODO: investigate using next line instead
+            //Value = value.ToString("E6", System.Globalization.CultureInfo.CreateSpecificCulture("sv-SE"));
+        }
+
+        public Axis GetValueAsAxis()
+        {
+            return Axis.TryParse(Value, out Axis val) ? val : val;
+        }
+
+        public void SetValueAsAxis(Axis value)
+        {
+            Value = value.ToVMFString();
         }
     }
 }
