@@ -14,7 +14,7 @@
       - [Constructor(string[] text)](#constructorstring-text)
       - [string[] `ToVMFStrings`(bool useTabs(true))](#string-tovmfstringsbool-usetabstrue)
       - [string `ToString`()](#string-tostring)
-  - [`VProperty` : `IVNode`](#vproperty--ivnode)
+  - [`class VProperty` : `IVNode`](#class-vproperty--ivnode)
       - [string `Name` (get, private set)](#string-name-get-private-set-1)
       - [string `Value` (get, set)](#string-value-get-set)
       - [Constructor(string name, string value)](#constructorstring-name-string-value)
@@ -29,7 +29,7 @@
       - [string[] `ToVMFStrings()`](#string-tovmfstrings)
 
 
-
+<br />
 
 ### namespace `VMFParser`
 #### interface `IVNode`
@@ -38,7 +38,7 @@
 > Represents the title of a node.
 
 
-
+<br /><br />
 
 #### class `VBlock` : `IVNode`
 > Represents a block containing other `IVNode`s in a `VMF`
@@ -66,9 +66,9 @@ In the following Example, `Name` = **visgroup**, and `Body` will contain a list 
 > Returns base ToString with "(Name)" to help with debugging.
 
 
+<br /><br />
 
-
-#### `VProperty` : `IVNode`
+#### class `VProperty` : `IVNode`
 > Represents a single property name and value.
 
 In the following example, `Name` = **visgroupid**, and the `Value` = **5**
@@ -89,7 +89,7 @@ In the following example, `Name` = **visgroupid**, and the `Value` = **5**
 > Returns base ToString with "(`Name`)" to help with debugging.
 
 
-
+<br /><br />
 
 #### class `VMF`
 > Represents the full contents of a [VMF file](https://developer.valvesoftware.com/wiki/Valve_Map_Format), this is similar to a `VBLock`, but with no `Name`.
