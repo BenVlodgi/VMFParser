@@ -3,7 +3,7 @@
 
 .Net Library written in C#. Useful for generating or parsing in an existing VMF into a tree like structure. Tree can be written to a new [VMF file](https://developer.valvesoftware.com/wiki/Valve_Map_Format).
 
-## API
+# API
 - [namespace `VMFParser`](#namespace-vmfparser)
   - [interface `IVNode`](#interface-ivnode)
     - [string `Name` (get)](#string-name-get)
@@ -31,8 +31,8 @@
 
 <br />
 
-### namespace `VMFParser`
-#### interface `IVNode`
+## namespace `VMFParser`
+### interface `IVNode`
 > Represents an entry in a `VMF`.
 ##### string `Name` (get)
 > Represents the title of a node.
@@ -40,7 +40,7 @@
 
 <br /><br />
 
-#### class `VBlock` : `IVNode`
+### class `VBlock` : `IVNode`
 > Represents a block containing other `IVNode`s in a `VMF`
 
 In the following Example, `Name` = **visgroup**, and `Body` will contain a list of the `VPropery`s
@@ -68,7 +68,7 @@ In the following Example, `Name` = **visgroup**, and `Body` will contain a list 
 
 <br /><br />
 
-#### class `VProperty` : `IVNode`
+### class `VProperty` : `IVNode`
 > Represents a single property name and value.
 
 In the following example, `Name` = **visgroupid**, and the `Value` = **5**
@@ -91,7 +91,7 @@ In the following example, `Name` = **visgroupid**, and the `Value` = **5**
 
 <br /><br />
 
-#### class `VMF`
+### class `VMF`
 > Represents the full contents of a [VMF file](https://developer.valvesoftware.com/wiki/Valve_Map_Format), this is similar to a `VBLock`, but with no `Name`.
 ###### IList\<`IVNode`\> `Body` (get, private set)
 > Holds all the subnodes (`IVNode`) in a `VMF`
